@@ -10,12 +10,6 @@ export interface Configuration {
     header?: any;
     headerStyle?: string;
     maxWidth?: number;
-    font?: string;
-    font_size?: string;
-    honorMarginPadding?: boolean;
-    honorColor?: boolean;
-    targetStyle?: string | string[];
-    targetStyles?: string | string[];
     properties?: any;
     gridHeaderStyle?: string;
     gridStyle?: string;
@@ -29,7 +23,6 @@ export interface Configuration {
     repeatTableHeader?: boolean;
     css?: string | string[];
     style?: string;
-    scanStyles?: boolean;
 }
 
 declare var printJS: (params: string | Configuration) => void;

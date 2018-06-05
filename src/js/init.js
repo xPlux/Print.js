@@ -18,10 +18,6 @@ export default {
       header: null,
       headerStyle: 'font-weight: 300;',
       maxWidth: 800,
-      font: 'TimesNewRoman',
-      font_size: '12pt',
-      honorMarginPadding: true,
-      honorColor: false,
       properties: null,
       gridHeaderStyle: 'font-weight: bold; padding: 5px; border: 1px solid #dddddd;',
       gridStyle: 'border: 1px solid lightgray; margin-bottom: -1px;',
@@ -32,14 +28,11 @@ export default {
       frameId: 'printJS',
       htmlData: '',
       documentTitle: 'Document',
-      targetStyle: ['clear', 'display', 'width', 'min-width', 'height', 'min-height', 'max-height'],
-      targetStyles: ['border', 'box', 'break', 'text-decoration'],
       ignoreElements: [],
       imageStyle: 'width:100%;',
       repeatTableHeader: true,
       css: null,
       style: null,
-      scanStyles: true
     }
 
     // Check if a printable document or object was supplied
@@ -61,9 +54,6 @@ export default {
         params.header = typeof args.header !== 'undefined' ? args.header : params.header
         params.headerStyle = typeof args.headerStyle !== 'undefined' ? args.headerStyle : params.headerStyle
         params.maxWidth = typeof args.maxWidth !== 'undefined' ? args.maxWidth : params.maxWidth
-        params.font = typeof args.font !== 'undefined' ? args.font : params.font
-        params.font_size = typeof args.font_size !== 'undefined' ? args.font_size : params.font_size
-        params.honorMarginPadding = typeof args.honorMarginPadding !== 'undefined' ? args.honorMarginPadding : params.honorMarginPadding
         params.properties = typeof args.properties !== 'undefined' ? args.properties : params.properties
         params.gridHeaderStyle = typeof args.gridHeaderStyle !== 'undefined' ? args.gridHeaderStyle : params.gridHeaderStyle
         params.gridStyle = typeof args.gridStyle !== 'undefined' ? args.gridStyle : params.gridStyle
@@ -72,14 +62,11 @@ export default {
         params.onLoadingEnd = typeof args.onLoadingEnd !== 'undefined' ? args.onLoadingEnd : params.onLoadingEnd
         params.modalMessage = typeof args.modalMessage !== 'undefined' ? args.modalMessage : params.modalMessage
         params.documentTitle = typeof args.documentTitle !== 'undefined' ? args.documentTitle : params.documentTitle
-        params.targetStyle = typeof args.targetStyle !== 'undefined' ? args.targetStyle : params.targetStyle
-        params.targetStyles = typeof args.targetStyles !== 'undefined' ? args.targetStyles : params.targetStyles
         params.ignoreElements = typeof args.ignoreElements !== 'undefined' ? args.ignoreElements : params.ignoreElements
         params.imageStyle = typeof args.imageStyle !== 'undefined' ? args.imageStyle : params.imageStyle
         params.repeatTableHeader = typeof args.repeatTableHeader !== 'undefined' ? args.repeatTableHeader : params.repeatTableHeader
         params.css = typeof args.css !== 'undefined' ? args.css : params.css
         params.style = typeof args.style !== 'undefined' ? args.style : params.style
-        params.scanStyles = typeof args.scanStyles !== 'undefined' ? args.scanStyles : params.scanStyles
         break
       default:
         throw new Error('Unexpected argument type! Expected "string" or "object", got ' + typeof args)
@@ -120,7 +107,7 @@ export default {
     if (params.type !== 'pdf') {
       printFrame.srcdoc = '<html><head><title>' + params.documentTitle + '</title>'
 
-      // Attach css files
+      // Attach custom css files
       if (params.css !== null) {
         // Add support for single file
         if (!Array.isArray(params.css)) params.css = [params.css]
