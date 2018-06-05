@@ -1,4 +1,4 @@
-import { collectStyles, loopNodesCollectStyles, addWrapper, addHeader } from './functions'
+import { addWrapper, addHeader } from './functions'
 import Print from './print'
 
 export default {
@@ -8,9 +8,8 @@ export default {
 
     // Check if element exists
     if (!printElement) {
-      window.console.error('Invalid HTML element id: ' + params.printable)
-
-      return false
+        window.console.error('Invalid HTML element id: ' + params.printable)
+        return
     }
 
     // Make a copy of the printElement to prevent DOM changes
@@ -24,19 +23,6 @@ export default {
 
     // Update printableElement variable with newly created DOM element
     printableElement = document.getElementById('printJS-html')
-
-    // Get main element styling
-    if (params.scanStyles === true) {
-      printableElement.setAttribute('style', collectStyles(printableElement, params) + 'margin:0 !important;')
-    }
-
-    // Get all children elements
-    let elements = printableElement.children
-
-    // Get styles for all children elements
-    if (params.scanStyles === true) {
-      loopNodesCollectStyles(elements, params)
-    }
 
     // Add header if any
     if (params.header) {
