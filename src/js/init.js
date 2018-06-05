@@ -118,6 +118,15 @@ export default {
         })
       }
 
+      // If we are printing html, collect the document stylesheets and attach them to the iframe
+      if (params.type === 'html') {
+        for (let i = 0; i < document.styleSheets.length; i++) {
+          if (document.styleSheets[i].href) {
+              printFrame.srcdoc += '<link rel="stylesheet" href="' + document.styleSheets[i].href + '">'
+          }
+        }
+      }
+
       printFrame.srcdoc += '</head><body></body></html>'
     }
 
