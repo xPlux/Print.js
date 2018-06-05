@@ -2,7 +2,7 @@
   <script src='./dist/print.min.js'></script>
   <script type="text/javascript">
     function printPdf() {
-      printJS('test.pdf');
+      printJS('test.pdf')
     }
 
     function printPdfWithModal() {
@@ -10,14 +10,14 @@
             printable: 'test.pdf',
             type: 'pdf',
             showModal: true
-        });
+        })
     }
 
     function printHtml() {
       printJS({
         printable: 'test',
         type: 'html'
-      });
+      })
     }
 
     function printHtmlCustomStyle() {
@@ -28,7 +28,7 @@
         type: 'html',
         style: style,
         scanStyles: false
-      });
+      })
     }
 
     function printHtmlCss() {
@@ -37,7 +37,7 @@
             type: 'html',
             css: 'test.css',
             scanStyles: false
-        });
+        })
     }
 
     function printJson() {
@@ -93,32 +93,32 @@
     <section id="test" class="test">
       <h1>Print.js Test Page</h1>
       <p>
-        <button onClick='printPdf();'>
+        <button onClick='printPdf()'>
           Print PDF
         </button>
-        <button onClick='printPdfWithModal();'>
+        <button onClick='printPdfWithModal()'>
           Print PDF with Loading Modal
         </button>
       </p>
       <p>
-        <button onClick='printHtml();'>
+        <button onClick='printHtml()'>
           Print HTML
         </button>
-        <button onClick='printHtmlCustomStyle();'>
+        <button onClick='printHtmlCustomStyle()'>
           Print HTML with custom style
         </button>
-        <button onClick='printHtmlCss();'>
+        <button onClick='printHtmlCss()'>
           Print HTML with custom css
         </button>
       </p>
       <p>
-        <button onClick='printJson();'>
+        <button onClick='printJson()'>
           Print JSON
         </button>
-        <button onClick='printStyledJson();'>
+        <button onClick='printStyledJson()'>
           Print Styled JSON
         </button>
-        <button onClick='printNestedJson();'>
+        <button onClick='printNestedJson()'>
           Print Nested JSON
         </button>
       </p>
