@@ -8,8 +8,8 @@ export default {
 
     // Check if element exists
     if (!printElement) {
-        window.console.error('Invalid HTML element id: ' + params.printable)
-        return
+      window.console.error('Invalid HTML element id: ' + params.printable)
+      return
     }
 
     // Make a copy of the printElement to prevent DOM changes

@@ -36,7 +36,7 @@ export default {
       imageStyle: 'width:100%;',
       repeatTableHeader: true,
       css: null,
-      style: null,
+      style: null
     }
 
     // Check if a printable document or object was supplied
@@ -130,7 +130,7 @@ export default {
       if (params.type === 'html') {
         for (let i = 0; i < document.styleSheets.length; i++) {
           if (document.styleSheets[i].href) {
-              printFrame.srcdoc += '<link rel="stylesheet" href="' + document.styleSheets[i].href + '">'
+            printFrame.srcdoc += '<link rel="stylesheet" href="' + document.styleSheets[i].href + '">'
           }
         }
       }

@@ -1,4 +1,4 @@
-export function addWrapper (htmlData, params) {
+export function addWrapper (htmlData) {
   return '<div style="width:100%;">' + htmlData + '</div>'
 }
 
