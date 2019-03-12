@@ -1,6 +1,9 @@
 # Print.js
 
-[![Build Status](https://travis-ci.org/crabbly/Print.js.svg?branch=master)](https://travis-ci.org/crabbly/Print.js) [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat)](LICENSE) [![Standard - JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](http://standardjs.com/) [![npm](https://img.shields.io/npm/v/print-js.svg)](https://www.npmjs.com/package/print-js)
+[![Build Status](https://travis-ci.org/crabbly/Print.js.svg?branch=master)](https://travis-ci.org/crabbly/Print.js)
+[![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat)](LICENSE)
+[![Standard - JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](http://standardjs.com/)
+[![npm](https://img.shields.io/npm/v/print-js.svg)](https://www.npmjs.com/package/print-js)
 
 A tiny javascript library to help printing from the web.
 
@@ -23,12 +26,22 @@ To install via yarn:
 yarn add print-js
 ```
 
+When installing via npm or yarn, import the library into your project:
+
+```js
+import printJS from 'print-js'
+```
+
 ## Documentation
 
 You can find documentation at [printjs.crabbly.com](http://printjs.crabbly.com/#documentation).
 
 
 ## Contributing to Print.js
+
+[![devDependencies Status](https://david-dm.org/crabbly/print.js/dev-status.svg)](https://david-dm.org/crabbly/print.js?type=dev)
+[![dependencies Status](https://david-dm.org/crabbly/print.js/status.svg)](https://david-dm.org/crabbly/print.js)
+[![slack](https://img.shields.io/badge/slack-printjs-orange.svg?logo=slack)](https://publicslack.com/slacks/printjs/invites/new)
 
 Contributions to Print.js are welcome and encouraged.
 
@@ -60,20 +73,30 @@ Please make your commits in logical sections with clear commit messages.
 
 ##### Setting up a dev environment
 
-```
+```bash
 npm install
 npm run watch
 ```
 
-If you want to test your modified code:
+##### Tests
 
+The library is written following the [Javascript Standard](https://standardjs.com) code style. When running tests, we will also test for any style issues or warnings.
+
+Automated tests are written using the [Jasmine](https://jasmine.github.io) framework and [Karma](https://karma-runner.github.io) runner.
+
+To run the automated tests:
+
+```bash
+npm run test
 ```
-npm install http-server -g
-http-server
+
+To manually test the library features:
+
+```bash
+npm start
 ```
 
-Navigate to `http://localhost:8080/test.html`
-
+This will serve `test\manual\test.html` and open `http://localhost:8080/test/manual` in your default browser.
 
 ## License
 

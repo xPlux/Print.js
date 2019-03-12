@@ -22,8 +22,12 @@ export default {
       gridHeaderStyle: 'font-weight: bold; padding: 5px; border: 1px solid #dddddd;',
       gridStyle: 'border: 1px solid lightgray; margin-bottom: -1px;',
       showModal: false,
+      onError: (error) => { throw error },
       onLoadingStart: null,
       onLoadingEnd: null,
+      onPrintDialogClose: null,
+      onPdfOpen: null,
+      onBrowserIncompatible: () => true,
       modalMessage: 'Retrieving Document...',
       frameId: 'printJS',
       htmlData: '',
@@ -58,8 +62,12 @@ export default {
         params.gridHeaderStyle = typeof args.gridHeaderStyle !== 'undefined' ? args.gridHeaderStyle : params.gridHeaderStyle
         params.gridStyle = typeof args.gridStyle !== 'undefined' ? args.gridStyle : params.gridStyle
         params.showModal = typeof args.showModal !== 'undefined' ? args.showModal : params.showModal
+        params.onError = typeof args.onError !== 'undefined' ? args.onError : params.onError
         params.onLoadingStart = typeof args.onLoadingStart !== 'undefined' ? args.onLoadingStart : params.onLoadingStart
         params.onLoadingEnd = typeof args.onLoadingEnd !== 'undefined' ? args.onLoadingEnd : params.onLoadingEnd
+        params.onPrintDialogClose = typeof args.onPrintDialogClose !== 'undefined' ? args.onPrintDialogClose : params.onPrintDialogClose
+        params.onPdfOpen = typeof args.onPdfOpen !== 'undefined' ? args.onPdfOpen : params.onPdfOpen
+        params.onBrowserIncompatible = typeof args.onBrowserIncompatible !== 'undefined' ? args.onBrowserIncompatible : params.onBrowserIncompatible
         params.modalMessage = typeof args.modalMessage !== 'undefined' ? args.modalMessage : params.modalMessage
         params.documentTitle = typeof args.documentTitle !== 'undefined' ? args.documentTitle : params.documentTitle
         params.ignoreElements = typeof args.ignoreElements !== 'undefined' ? args.ignoreElements : params.ignoreElements
@@ -135,12 +143,20 @@ export default {
       case 'pdf':
         // Check browser support for pdf and if not supported we will just open the pdf file instead
         if (Browser.isFirefox() || Browser.isEdge() || Browser.isIE()) {
-          console.info('PrintJS currently doesn\'t support PDF printing in Firefox, Internet Explorer and Edge.')
-          let win = window.open(params.fallbackPrintable, '_blank')
-          win.focus()
-          // Make sure there is no loading modal opened
-          if (params.showModal) Modal.close()
-          if (params.onLoadingEnd) params.onLoadingEnd()
+          try {
+            console.info('PrintJS currently doesn\'t support PDF printing in Firefox, Internet Explorer and Edge.')
+            if (params.onBrowserIncompatible() === true) {
+              let win = window.open(params.fallbackPrintable, '_blank')
+              win.focus()
+              if (params.onPdfOpen) params.onPdfOpen()
+            }
+          } catch (e) {
+            params.onError(e)
+          } finally {
+            // Make sure there is no loading modal opened
+            if (params.showModal) Modal.close()
+            if (params.onLoadingEnd) params.onLoadingEnd()
+          }
         } else {
           Pdf.print(params, printFrame)
         }
