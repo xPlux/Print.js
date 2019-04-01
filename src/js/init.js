@@ -4,10 +4,11 @@ import Browser from './browser'
 import Modal from './modal'
 import Pdf from './pdf'
 import Html from './html'
+import RawHtml from './raw-html'
 import Image from './image'
 import Json from './json'
 
-const printTypes = ['pdf', 'html', 'image', 'json']
+const printTypes = ['pdf', 'html', 'image', 'json', 'raw-html']
 
 export default {
   init () {
@@ -36,7 +37,9 @@ export default {
       imageStyle: 'width:100%;',
       repeatTableHeader: true,
       css: null,
-      style: null
+      style: null,
+      base64: false
+
     }
 
     // Check if a printable document or object was supplied
@@ -75,6 +78,7 @@ export default {
         params.repeatTableHeader = typeof args.repeatTableHeader !== 'undefined' ? args.repeatTableHeader : params.repeatTableHeader
         params.css = typeof args.css !== 'undefined' ? args.css : params.css
         params.style = typeof args.style !== 'undefined' ? args.style : params.style
+        params.base64 = typeof args.base64 !== 'undefined'
         break
       default:
         throw new Error('Unexpected argument type! Expected "string" or "object", got ' + typeof args)
@@ -166,6 +170,9 @@ export default {
         break
       case 'html':
         Html.print(params, printFrame)
+        break
+      case 'raw-html':
+        RawHtml.print(params, printFrame)
         break
       case 'json':
         Json.print(params, printFrame)

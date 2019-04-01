@@ -41,6 +41,16 @@
       });
     }
 
+    function printRawHtml() {
+      printJS({
+        printable: `<h1>Print.js Raw HTML Print Test</h1>
+        <p class="blueText">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <p>sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>`,
+        type: 'raw-html',
+        style: '.blueText {color:blue;}'
+      });
+    }
+
     function printHtmlCustomStyle() {
       const style = '@page { margin: 0 } @media print { h1 { color: blue } }'
 
@@ -48,7 +58,6 @@
         printable: 'test',
         type: 'html',
         style: style,
-        scanStyles: false
       });
     }
 
@@ -57,7 +66,6 @@
             printable: 'test',
             type: 'html',
             css: 'test.css',
-            scanStyles: false
         });
     }
 
@@ -164,6 +172,9 @@
         </button>
         <button onClick='printHtmlCss();'>
           Print HTML with custom css
+        </button>
+        <button onClick='printRawHtml();'>
+          Print Raw HTML
         </button>
       </p>
       <p>
