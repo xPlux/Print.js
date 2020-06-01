@@ -23,6 +23,8 @@ const Print = {
       // Append printable element to the iframe body
       printDocument.body.appendChild(params.printableElement)
 
+      params.onHtmlLoad(printDocument);
+
       // Add custom style
       if (params.type !== 'pdf' && params.style) {
         // Create style element
