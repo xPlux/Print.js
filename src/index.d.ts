@@ -22,7 +22,11 @@ declare namespace printJS {
     gridHeaderStyle?: string;
     gridStyle?: string;
     showModal?: boolean;
+<<<<<<< HEAD
     onHtmlLoad?: (printDocument: any) => void;
+=======
+    onHtmlLoad?: () => void;
+>>>>>>> aabfd18a9a578d51f423671332ded66f98d47239
     onLoadingStart?: () => void;
     onLoadingEnd?: () => void;
     modalMessage?: string;
@@ -34,7 +38,7 @@ declare namespace printJS {
     style?: string;
     scanStyles?: boolean;
     onError?: (error: any) => void;
-    onPrintDialogClose?: () => void;
+    onPrintDialogClose?: (printDocument: any) => void;
     onPdfOpen?: () => void;
     base64?: boolean;
   }
