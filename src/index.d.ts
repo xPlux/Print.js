@@ -22,6 +22,7 @@ declare namespace printJS {
     gridHeaderStyle?: string;
     gridStyle?: string;
     showModal?: boolean;
+    onHtmlLoad?: (printDocument: any) => void;
     onLoadingStart?: () => void;
     onLoadingEnd?: () => void;
     modalMessage?: string;
