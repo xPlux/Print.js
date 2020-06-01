@@ -27,6 +27,7 @@ export default {
       gridHeaderStyle: 'font-weight: bold; padding: 5px; border: 1px solid #dddddd;',
       gridStyle: 'border: 1px solid lightgray; margin-bottom: -1px;',
       showModal: false,
+      onHtmlLoad: (printDocument) => { },
       onError: (error) => { throw error },
       onLoadingStart: null,
       onLoadingEnd: null,
